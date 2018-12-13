@@ -1,7 +1,7 @@
 package main
 
-import "github.com/gofunct/scaffold/cmd"
+import "github.com/gofunct/scaffold/hack"
 
 func main() {
-	cmd.Execute()
+	hack.Execute()
 }

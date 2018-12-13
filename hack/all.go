@@ -4,10 +4,6 @@ import (
 	"github.com/spf13/cobra"
 )
 
-func init() {
-	RootCmd.AddCommand(newCmd)
-}
-
 var newCmd = &cobra.Command{
 	Use:   "new [name]",
 	Short: "Create a new microservice",

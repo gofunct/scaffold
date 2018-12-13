@@ -10,7 +10,6 @@ import (
 	"github.com/mattn/go-colorable"
 	"github.com/xlab/treeprint"
 	"go/format"
-	"log"
 	"os"
 	"os/exec"
 	"path/filepath"
@@ -20,6 +19,7 @@ import (
 	"github.com/spf13/cobra"
 	"github.com/spf13/viper"
 	"text/template"
+	"go.uber.org/zap"
 )
 
 var cfgFile string
@@ -27,6 +27,7 @@ var cfgFile string
 var (
 	gopath       string
 	templatePath string
+	log *zap.Logger
 )
 
 // RootCmd represents the base command when called without any subcommands
@@ -54,8 +55,13 @@ func Execute() {
 }
 
 func init() {
+	var err error
 	cobra.OnInitialize(initConfig)
-
+	log, err = zap.NewDevelopment()
+	if err != nil {
+		os.Exit(1)
+	}
+	log.Debug("logger set")
 	// Here you will define your flags and configuration settings.
 	// Cobra supports persistent flags, which, if defined here,
 	// will be global for your application.
@@ -350,14 +356,14 @@ func (f *folder) render(templatePath string, p project) error {
 			var out bytes.Buffer
 			err = t.Execute(&out, p)
 			if err != nil {
-				log.Printf("Could not process template %s\n", v)
+				log.Debug("Could not process template %s\n", zap.Any("file", v))
 				return err
 			}
 
 			b, err := format.Source(out.Bytes())
 			if err != nil {
 				fmt.Print(string(out.Bytes()))
-				log.Printf("\nCould not format Go file %s\n", v)
+				log.Debug("Could not format go file %s\n", zap.Any("file", v))
 				return err
 			}
 

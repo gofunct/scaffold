@@ -1,7 +1,6 @@
 package source
 
-var CmdTemplate = `
-package {{.cmdPackage}}
+var CmdTemplate = `package {{.cmdPackage}}
 
 import (
 "fmt"

@@ -1,6 +1,5 @@
 package source
 
 
-var ProtoTemplate = `
-TODO
+var ProtoTemplate = `TODO
 `

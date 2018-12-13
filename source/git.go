@@ -1,6 +1,5 @@
 package source
 
-var GitIgnoreTemplate = `
-vendor/
+var GitIgnoreTemplate = `vendor/
 bin/
 `

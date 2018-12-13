@@ -33,6 +33,5 @@ func Execute() {
 }
 
 func init() {
-	rootCmd.AddCommand(AddCmd)
 	rootCmd.AddCommand(InitCmd)
 }

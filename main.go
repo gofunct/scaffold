@@ -1,4 +1,4 @@
-package gotasks
+package main
 
 import "github.com/gofunct/scaffold/cmd"
 

@@ -1,7 +1,6 @@
 package source
 
-var MakefileTemplate = `
-ROOTDIR=$(dir $(abspath $(lastword $(MAKEFILE_LIST))))
+var MakefileTemplate = `ROOTDIR=$(dir $(abspath $(lastword $(MAKEFILE_LIST))))
 PROJECT_ROOT=github.com/gofunct/gotasks
 PB_FILES=$(shell find . -path '*.pb.go' | grep -v "vendor")
 PROTO_FILES=$(shell find . -path '*.proto' | grep -v "vendor")

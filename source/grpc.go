@@ -1,8 +1,7 @@
 package source
 
 
-var GrpcServerTemplate = `
-package cmd
+var GrpcServerTemplate = `package cmd
 
 
 import (

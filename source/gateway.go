@@ -1,7 +1,6 @@
 package source
 
-var DockerfileTemplate = `
-ARG alpine_version=3.8
+var DockerfileTemplate = `ARG alpine_version=3.8
 FROM golang:1.10-alpine$alpine_version AS build
 
 RUN apk add --update --no-cache git
@@ -31,8 +30,7 @@ ENTRYPOINT ["/app/grpc_gateway"]
 
 
 
-var GatewayTemplate = `
-package main
+var GatewayTemplate = `package main
 
 import (
 	"encoding/json"
@@ -344,3 +342,4 @@ func main() {
 			server.Shutdown(shutdown)
 		})
 }
+`

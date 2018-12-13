@@ -1,7 +1,6 @@
 package source
 
-var RootTemplate = `
-package cmd
+var RootTemplate = `package cmd
 
 import (
 	"fmt"

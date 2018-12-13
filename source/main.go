@@ -1,7 +1,6 @@
 package source
 
-var MainTemplate = `
-package main
+var MainTemplate = `package main
 
 import "{{ .importpath }}"
 

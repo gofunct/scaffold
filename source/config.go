@@ -1,7 +1,6 @@
 package source
 
-var ConfigTemplate = `
-app_name: {{ .appname }}
+var ConfigTemplate = `app_name: {{ .appname }}
 grpc_host: "localhost"
 grpc_port: ":8443"
 grpc_debug_port: ":8444"

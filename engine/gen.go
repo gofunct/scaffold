@@ -15,23 +15,23 @@ func Gen(t string, f string, p *Project) {
 			Er(err)
 		}
 
-		err = WriteStringToFile(filepath.Join(p.CmdPath(), f), script)
-		if err != nil {
-			Er(err)
-		}
+	err = WriteStringToFile(filepath.Join(p.AbsPath(), f), script)
+	if err != nil {
+		Er(err)
+	}
 }
 
 
 func GenCmd(t, name string, p *Project) {
 	data := make(map[string]interface{})
-	data["cmdPackage"] = filepath.Base(filepath.Dir("cmd")) // last dir of path
+	data["cmdPackage"] = filepath.Base(filepath.Dir("cmd/")) // last dir of path
 	data["cmdName"] = name
 
 	cmdScript, err := ExecuteTemplate(t, data)
 	if err != nil {
 		Er(err)
 	}
-	err = WriteStringToFile("cmd", cmdScript)
+	err = WriteStringToFile(filepath.Join(p.CmdPath(), name+".go"), cmdScript)
 	if err != nil {
 		Er(err)
 	}
